@@ -1,0 +1,24 @@
+.TH SERVER 1
+.SH NAME
+server \- Receive and process client transactions.
+.SH SYNOPSIS
+.B ./server
+[\fIPORT-NUMBER\fR]
+.SH DESCRIPTION
+.B server
+waits for incoming connections from clients and accepts them. After accepting,
+it reads transactions to process from the client. This single-threaded
+server handles one client at a time. After the transactions are 
+executed the connection is closed and the server loops back to 
+listening for connections. The server terminates after 30 seconds, 
+also displaying a summary of all the transactions executed.
+.SH OPTIONS
+.TP
+.BR PORT-NUMBER
+Set the port that the server will listen for connections on.
+.SH BUGS
+The 
+.SH "SEE ALSO"
+client(1)
+.SH AUTHOR
+Punar Vasu Gupta. CMPUT 379 Fall 2021.

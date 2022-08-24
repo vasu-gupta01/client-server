@@ -1,0 +1,38 @@
+.TH CLIENT 1
+.SH NAME
+client \- Send messages to server, indicating Transactions to execute. 
+.SH SYNOPSIS
+.B ./client
+[\fIPORT NUMBER\fR]
+[\fISERVER-IP-ADDRESS\fR]
+.SH DESCRIPTION
+.B client
+reads from input (stdin or a file), a sequence of 
+transactions (T<n>) and sleep commands (S<n>). Where <n> 
+is an integer that specifies the respective command parameters.
+After a connection with the server has been established, a message
+containing the sequence of transactions is sent to the server. When
+the client encounters a sleep commaind, it sleeps for n units of time.
+After all messages are sent, the client closes the connection and terminates.
+.SH OPTIONS
+.TP
+.BR PORT-NUMBER
+The port that the server will be listening on.
+.TP
+.BR SERVER-IP-ADDRESS
+The IP Address of server host machine.
+.SH INPUT
+The input provided must be a sequence of 
+\fBT<n>\fP and \fBS<n>\fP separated by single white-space 
+characters. Where n is a positive integer that specifies the
+duration of the transaction and unit time to sleep, respectively.
+Note, for \fBS<n>\fP, n is between 0 and 100.
+.SH OUTPUT
+The output contains the sequence of commands executed, along with
+information on time of execution and response from server for each transaction.
+Output is saved to file named \fIHOSTNAME.PID\fP, (i.e. hostname of the
+client machine and PID of the current client process).
+.SH "SEE ALSO"
+server(1)
+.SH AUTHOR
+Punar Vasu Gupta. CMPUT 379 Fall 2021.
